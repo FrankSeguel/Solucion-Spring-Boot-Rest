@@ -1,0 +1,75 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Solucion",
+		"_postman_id": "74bbd84e-091d-7640-4f01-1a0f1041a9e5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consultar Saldo",
+			"request": {
+				"url": "http://localhost:8080/clientes/saldo/111",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Consultar Clientes y PUT Crear Cliente",
+			"request": {
+				"url": "http://localhost:8080/clientes/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"rut\": 444,\n        \"nombres\": \"Francisco\",\n        \"apellidoP\": \"Seguel\",\n        \"apellidoM\": \"Arriagada\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Abono",
+			"request": {
+				"url": "http://localhost:8080/clientes/abonos/111/3000",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Movimientos",
+			"request": {
+				"url": "http://localhost:8080/clientes/movimientos/111",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Retiro",
+			"request": {
+				"url": "http://localhost:8080/clientes/retiros/111/11000",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,440 @@
+#%RAML 0.8
+title: solution
+version: "0.0.1"
+baseUri: /
+/clientes: 
+    displayName: Clientes Resource
+    description: Clientes Resource
+    post: 
+        description: updateCliente
+        body: 
+            application/json: 
+                schema: |
+                    {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:cl:multicaja:models:Cliente",
+                      "properties" : {
+                        "rut" : {
+                          "type" : "integer"
+                        },
+                        "nombres" : {
+                          "type" : "string"
+                        },
+                        "apellidoP" : {
+                          "type" : "string"
+                        },
+                        "apellidoM" : {
+                          "type" : "string"
+                        },
+                        "saldo" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                            "properties" : {
+                              "id" : {
+                                "type" : "integer"
+                              },
+                              "tipo" : {
+                                "type" : "string"
+                              },
+                              "monto" : {
+                                "type" : "integer"
+                              },
+                              "fecha" : {
+                                "type" : "string",
+                                "format" : "date-time"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+        responses: 
+            "200": 
+                description: Successful Response
+                body: 
+                    application/json: 
+                        schema: |
+                            {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:cl:multicaja:models:Cliente",
+                              "properties" : {
+                                "rut" : {
+                                  "type" : "integer"
+                                },
+                                "nombres" : {
+                                  "type" : "string"
+                                },
+                                "apellidoP" : {
+                                  "type" : "string"
+                                },
+                                "apellidoM" : {
+                                  "type" : "string"
+                                },
+                                "saldo" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer"
+                                      },
+                                      "tipo" : {
+                                        "type" : "string"
+                                      },
+                                      "monto" : {
+                                        "type" : "integer"
+                                      },
+                                      "fecha" : {
+                                        "type" : "string",
+                                        "format" : "date-time"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+    put: 
+        description: Operaciones Basicas de Crear, Modificar y Eliminar
+        body: 
+            application/json: 
+                schema: |
+                    {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:cl:multicaja:models:Cliente",
+                      "properties" : {
+                        "rut" : {
+                          "type" : "integer"
+                        },
+                        "nombres" : {
+                          "type" : "string"
+                        },
+                        "apellidoP" : {
+                          "type" : "string"
+                        },
+                        "apellidoM" : {
+                          "type" : "string"
+                        },
+                        "saldo" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                            "properties" : {
+                              "id" : {
+                                "type" : "integer"
+                              },
+                              "tipo" : {
+                                "type" : "string"
+                              },
+                              "monto" : {
+                                "type" : "integer"
+                              },
+                              "fecha" : {
+                                "type" : "string",
+                                "format" : "date-time"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+        responses: 
+            "200": 
+                description: Successful Response
+                body: 
+                    application/json: 
+                        schema: |
+                            {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:cl:multicaja:models:Cliente",
+                              "properties" : {
+                                "rut" : {
+                                  "type" : "integer"
+                                },
+                                "nombres" : {
+                                  "type" : "string"
+                                },
+                                "apellidoP" : {
+                                  "type" : "string"
+                                },
+                                "apellidoM" : {
+                                  "type" : "string"
+                                },
+                                "saldo" : {
+                                  "type" : "array",
+                                  "items" : {
+                                    "type" : "object",
+                                    "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer"
+                                      },
+                                      "tipo" : {
+                                        "type" : "string"
+                                      },
+                                      "monto" : {
+                                        "type" : "integer"
+                                      },
+                                      "fecha" : {
+                                        "type" : "string",
+                                        "format" : "date-time"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+    get: 
+        description: Operaciones Basicas de Listar Todos y Filtro
+        responses: 
+            "200": 
+                description: Successful Response
+                body: 
+                    application/json: 
+                        schema: |
+                            {
+                              "type" : "array",
+                              "items" : {
+                                "type" : "object",
+                                "id" : "urn:jsonschema:cl:multicaja:models:Cliente",
+                                "properties" : {
+                                  "rut" : {
+                                    "type" : "integer"
+                                  },
+                                  "nombres" : {
+                                    "type" : "string"
+                                  },
+                                  "apellidoP" : {
+                                    "type" : "string"
+                                  },
+                                  "apellidoM" : {
+                                    "type" : "string"
+                                  },
+                                  "saldo" : {
+                                    "type" : "array",
+                                    "items" : {
+                                      "type" : "object",
+                                      "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                                      "properties" : {
+                                        "id" : {
+                                          "type" : "integer"
+                                        },
+                                        "tipo" : {
+                                          "type" : "string"
+                                        },
+                                        "monto" : {
+                                          "type" : "integer"
+                                        },
+                                        "fecha" : {
+                                          "type" : "string",
+                                          "format" : "date-time"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+    /{id}: 
+        displayName: A specific id
+        description: "{id} Resource"
+        uriParameters: 
+            id: 
+                displayName: id
+                type: integer
+                required: true
+                repeat: false
+        delete: 
+            description: deleteClienteById
+            responses: 
+                "200": 
+                    description: Successful Response
+                    body: 
+                        application/json: 
+                            schema: |
+                                {
+                                  "type" : "string",
+                                  "enum" : [ "CONTINUE", "SWITCHING_PROTOCOLS", "PROCESSING", "CHECKPOINT", "OK", "CREATED", "ACCEPTED", "NON_AUTHORITATIVE_INFORMATION", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MULTI_STATUS", "ALREADY_REPORTED", "IM_USED", "MULTIPLE_CHOICES", "MOVED_PERMANENTLY", "FOUND", "MOVED_TEMPORARILY", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "PERMANENT_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "PAYLOAD_TOO_LARGE", "REQUEST_ENTITY_TOO_LARGE", "URI_TOO_LONG", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "I_AM_A_TEAPOT", "INSUFFICIENT_SPACE_ON_RESOURCE", "METHOD_FAILURE", "DESTINATION_LOCKED", "UNPROCESSABLE_ENTITY", "LOCKED", "FAILED_DEPENDENCY", "UPGRADE_REQUIRED", "PRECONDITION_REQUIRED", "TOO_MANY_REQUESTS", "REQUEST_HEADER_FIELDS_TOO_LARGE", "UNAVAILABLE_FOR_LEGAL_REASONS", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED", "VARIANT_ALSO_NEGOTIATES", "INSUFFICIENT_STORAGE", "LOOP_DETECTED", "BANDWIDTH_LIMIT_EXCEEDED", "NOT_EXTENDED", "NETWORK_AUTHENTICATION_REQUIRED" ]
+                                }
+        get: 
+            description: getClienteById
+            responses: 
+                "200": 
+                    description: Successful Response
+                    body: 
+                        application/json: 
+                            schema: |
+                                {
+                                  "type" : "object",
+                                  "id" : "urn:jsonschema:cl:multicaja:models:Cliente",
+                                  "properties" : {
+                                    "rut" : {
+                                      "type" : "integer"
+                                    },
+                                    "nombres" : {
+                                      "type" : "string"
+                                    },
+                                    "apellidoP" : {
+                                      "type" : "string"
+                                    },
+                                    "apellidoM" : {
+                                      "type" : "string"
+                                    },
+                                    "saldo" : {
+                                      "type" : "array",
+                                      "items" : {
+                                        "type" : "object",
+                                        "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                                        "properties" : {
+                                          "id" : {
+                                            "type" : "integer"
+                                          },
+                                          "tipo" : {
+                                            "type" : "string"
+                                          },
+                                          "monto" : {
+                                            "type" : "integer"
+                                          },
+                                          "fecha" : {
+                                            "type" : "string",
+                                            "format" : "date-time"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+    /saldo: 
+        displayName: Saldo Resource
+        description: Saldo Resource
+        /{id}: 
+            displayName: A specific id
+            description: "{id} Resource"
+            uriParameters: 
+                id: 
+                    displayName: id
+                    type: integer
+                    required: true
+                    repeat: false
+            get: 
+                description: '@GetMapping("/saldo/{id}", produces = MediaType.APPLICATION_JSON_VALUE)'
+                responses: 
+                    "200": 
+                        description: Successful Response
+                        body: 
+                            application/json: 
+                                schema: |
+                                    {
+                                      "type" : "string"
+                                    }
+    /movimientos: 
+        displayName: Movimientos Resource
+        description: Movimientos Resource
+        /{id}: 
+            displayName: A specific id
+            description: "{id} Resource"
+            uriParameters: 
+                id: 
+                    displayName: id
+                    type: integer
+                    required: true
+                    repeat: false
+            get: 
+                description: getMovimientos
+                responses: 
+                    "200": 
+                        description: Successful Response
+                        body: 
+                            application/json: 
+                                schema: |
+                                    {
+                                      "type" : "array",
+                                      "items" : {
+                                        "type" : "object",
+                                        "id" : "urn:jsonschema:cl:multicaja:models:TipoSaldo",
+                                        "properties" : {
+                                          "id" : {
+                                            "type" : "integer"
+                                          },
+                                          "tipo" : {
+                                            "type" : "string"
+                                          },
+                                          "monto" : {
+                                            "type" : "integer"
+                                          },
+                                          "fecha" : {
+                                            "type" : "string",
+                                            "format" : "date-time"
+                                          }
+                                        }
+                                      }
+                                    }
+    /abonos: 
+        displayName: Abonos Resource
+        description: Abonos Resource
+        /{id}: 
+            displayName: A specific id
+            description: "{id} Resource"
+            uriParameters: 
+                id: 
+                    displayName: id
+                    type: integer
+                    required: true
+                    repeat: false
+            /{monto}: 
+                displayName: A specific monto
+                description: "{monto} Resource"
+                uriParameters: 
+                    monto: 
+                        displayName: monto
+                        type: integer
+                        required: true
+                        repeat: false
+                post: 
+                    description: ingresarAbonos
+                    responses: 
+                        "200": 
+                            description: Successful Response
+                            body: 
+                                application/json: 
+                                    schema: |
+                                        {
+                                          "type" : "string",
+                                          "enum" : [ "CONTINUE", "SWITCHING_PROTOCOLS", "PROCESSING", "CHECKPOINT", "OK", "CREATED", "ACCEPTED", "NON_AUTHORITATIVE_INFORMATION", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MULTI_STATUS", "ALREADY_REPORTED", "IM_USED", "MULTIPLE_CHOICES", "MOVED_PERMANENTLY", "FOUND", "MOVED_TEMPORARILY", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "PERMANENT_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "PAYLOAD_TOO_LARGE", "REQUEST_ENTITY_TOO_LARGE", "URI_TOO_LONG", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "I_AM_A_TEAPOT", "INSUFFICIENT_SPACE_ON_RESOURCE", "METHOD_FAILURE", "DESTINATION_LOCKED", "UNPROCESSABLE_ENTITY", "LOCKED", "FAILED_DEPENDENCY", "UPGRADE_REQUIRED", "PRECONDITION_REQUIRED", "TOO_MANY_REQUESTS", "REQUEST_HEADER_FIELDS_TOO_LARGE", "UNAVAILABLE_FOR_LEGAL_REASONS", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED", "VARIANT_ALSO_NEGOTIATES", "INSUFFICIENT_STORAGE", "LOOP_DETECTED", "BANDWIDTH_LIMIT_EXCEEDED", "NOT_EXTENDED", "NETWORK_AUTHENTICATION_REQUIRED" ]
+                                        }
+    /retiros: 
+        displayName: Retiros Resource
+        description: Retiros Resource
+        /{id}: 
+            displayName: A specific id
+            description: "{id} Resource"
+            uriParameters: 
+                id: 
+                    displayName: id
+                    type: integer
+                    required: true
+                    repeat: false
+            /{monto}: 
+                displayName: A specific monto
+                description: "{monto} Resource"
+                uriParameters: 
+                    monto: 
+                        displayName: monto
+                        type: integer
+                        required: true
+                        repeat: false
+                post: 
+                    description: ingresarRetiros
+                    responses: 
+                        "200": 
+                            description: Successful Response
+                            body: 
+                                application/json: 
+                                    schema: |
+                                        {
+                                          "type" : "string",
+                                          "enum" : [ "CONTINUE", "SWITCHING_PROTOCOLS", "PROCESSING", "CHECKPOINT", "OK", "CREATED", "ACCEPTED", "NON_AUTHORITATIVE_INFORMATION", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MULTI_STATUS", "ALREADY_REPORTED", "IM_USED", "MULTIPLE_CHOICES", "MOVED_PERMANENTLY", "FOUND", "MOVED_TEMPORARILY", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "PERMANENT_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "PAYLOAD_TOO_LARGE", "REQUEST_ENTITY_TOO_LARGE", "URI_TOO_LONG", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "I_AM_A_TEAPOT", "INSUFFICIENT_SPACE_ON_RESOURCE", "METHOD_FAILURE", "DESTINATION_LOCKED", "UNPROCESSABLE_ENTITY", "LOCKED", "FAILED_DEPENDENCY", "UPGRADE_REQUIRED", "PRECONDITION_REQUIRED", "TOO_MANY_REQUESTS", "REQUEST_HEADER_FIELDS_TOO_LARGE", "UNAVAILABLE_FOR_LEGAL_REASONS", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED", "VARIANT_ALSO_NEGOTIATES", "INSUFFICIENT_STORAGE", "LOOP_DETECTED", "BANDWIDTH_LIMIT_EXCEEDED", "NOT_EXTENDED", "NETWORK_AUTHENTICATION_REQUIRED" ]
+                                        }
