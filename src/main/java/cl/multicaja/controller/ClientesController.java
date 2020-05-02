@@ -43,11 +43,15 @@ public class ClientesController {
 
     @Autowired
     SaldosService saldosService;
-    
+
     private static final String ABONOS = "ABONOS";
     private static final String RETIROS = "RETIROS";
-    
-    //Operaciones Basicas de Crear, Modificar y Eliminar
+
+    /**
+     *
+     * Operaciones Basicas de Crear, Modificar y Eliminar Clientes
+     *
+     */
     @PutMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
@@ -70,7 +74,10 @@ public class ClientesController {
         return HttpStatus.OK;
     }
 
-    //Operaciones Basicas de Listar Todos y Filtro
+    /**
+     * Operaciones Basicas de Listar Todos y Filtro
+     *
+     */
     @GetMapping
     public ResponseEntity<List<Cliente>> getAllClientes() {
         List<Cliente> list = clienteService.getClientes();
@@ -83,10 +90,15 @@ public class ClientesController {
         return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
     }
 
-    
-    
-    //Operaciones del negocio .
-    @GetMapping(path = "/saldo/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+    /**
+     * Operaciones del negocio . En este servicio podemos consultar el saldo de
+     * un cliente
+     *
+     * @param id
+     * @return JSON
+     * @throws cl.multicaja.utils.exception.BusinessException
+     */
+    @GetMapping(path = "/saldo/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getSaldoCliente(@PathVariable("id") Long id) throws BusinessException {
         Cliente cliente = clienteService.getClienteByRutId(id);
         int saldo = 0;
@@ -103,12 +115,29 @@ public class ClientesController {
         return new ResponseEntity<>(saldojson, HttpStatus.OK);
     }
 
+    /**
+     * Operaciones del negocio . En este servicio podemos consultar todos los
+     * movimientos de un cliente
+     *
+     * @param id
+     * @return List< TipoSaldo >
+     * @throws cl.multicaja.utils.exception.BusinessException
+     */
     @GetMapping("/movimientos/{id}")
     public ResponseEntity<List<TipoSaldo>> getMovimientos(@PathVariable("id") Long id) throws BusinessException {
         Cliente cliente = clienteService.getClienteByRutId(id);
         return new ResponseEntity<>(cliente.getSaldo(), new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Operaciones del negocio . En este servicio podemos ingresar abonos a un
+     * cliente
+     *
+     * @param id
+     * @param monto
+     * @return HttpStatus
+     * @throws cl.multicaja.utils.exception.BusinessException
+     */
     @PostMapping("/abonos/{id}/{monto}")
     public HttpStatus ingresarAbonos(@PathVariable("id") Long id, @PathVariable("monto") Long monto) throws BusinessException {
 
@@ -121,11 +150,20 @@ public class ClientesController {
         ts.setTipo(ABONOS);
 
         cl.getSaldo().add(ts);
-        
+
         saldosService.createOrUpdateTipoSaldo(ts);
         return HttpStatus.OK;
     }
 
+    /**
+     * Operaciones del negocio . En este servicio podemos ingresar retiros a un
+     * cliente
+     *
+     * @param id
+     * @param monto
+     * @return HttpStatus
+     * @throws cl.multicaja.utils.exception.BusinessException
+     */
     @PostMapping("/retiros/{id}/{monto}")
     public HttpStatus ingresarRetiros(@PathVariable("id") Long id, @PathVariable("monto") Long monto) throws BusinessException {
 
@@ -138,7 +176,7 @@ public class ClientesController {
         ts.setTipo(RETIROS);
 
         cl.getSaldo().add(ts);
-        
+
         saldosService.createOrUpdateTipoSaldo(ts);
         return HttpStatus.OK;
     }
