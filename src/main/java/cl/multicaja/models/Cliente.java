@@ -6,6 +6,7 @@
 package cl.multicaja.models;
 
 import cl.multicaja.utils.reflection.BaseBean;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,5 +48,11 @@ public class Cliente extends BaseBean {
              inverseJoinColumns = {
                 @JoinColumn(name = "SALDO_TIPO_SALDO_ID", referencedColumnName = "ID")})
     private List<TipoSaldo> saldo;
+
+    public Cliente() {
+        this.saldo = new ArrayList<>();
+    }
+    
+    
 
 }

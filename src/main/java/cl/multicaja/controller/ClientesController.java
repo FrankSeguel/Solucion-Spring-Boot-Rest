@@ -11,6 +11,10 @@ import cl.multicaja.services.ClientesService;
 import cl.multicaja.services.SaldosService;
 import cl.multicaja.utils.exception.BusinessException;
 import java.util.Date;
+//import io.swagger.annotations.Api;
+//import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiResponse;
+//import io.swagger.annotations.ApiResponses;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +23,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +32,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author fseguel
  */
+@CrossOrigin
+@Transactional
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClientesController {
@@ -52,17 +62,13 @@ public class ClientesController {
      * Operaciones Basicas de Crear, Modificar y Eliminar Clientes
      *
      */
-    @PutMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
-    )
+    @PutMapping( consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE} )
     public ResponseEntity<Cliente> createCliente(@RequestBody Cliente entity) throws BusinessException {
         Cliente updated = clienteService.createOrUpdateCliente(entity);
         return new ResponseEntity<>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @PostMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
-    )
+    @PostMapping( consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE} )
     public ResponseEntity<Cliente> updateCliente(@RequestBody Cliente entity) throws BusinessException {
         Cliente updated = clienteService.createOrUpdateCliente(entity);
         return new ResponseEntity<>(updated, new HttpHeaders(), HttpStatus.OK);
@@ -78,7 +84,7 @@ public class ClientesController {
      * Operaciones Basicas de Listar Todos y Filtro
      *
      */
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Cliente>> getAllClientes() {
         List<Cliente> list = clienteService.getClientes();
         return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
@@ -123,6 +129,8 @@ public class ClientesController {
      * @return List< TipoSaldo >
      * @throws cl.multicaja.utils.exception.BusinessException
      */
+    @RequestMapping(value = "/movimientos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     @GetMapping("/movimientos/{id}")
     public ResponseEntity<List<TipoSaldo>> getMovimientos(@PathVariable("id") Long id) throws BusinessException {
         Cliente cliente = clienteService.getClienteByRutId(id);

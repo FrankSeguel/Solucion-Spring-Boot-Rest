@@ -7,8 +7,12 @@
             </packagings>
             <goals>
                 <goal>clean</goal>
+                <goal>package</goal>
                 <goal>install</goal>
             </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
         </action>
         <action>
             <actionName>run</actionName>

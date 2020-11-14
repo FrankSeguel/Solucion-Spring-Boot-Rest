@@ -6,13 +6,23 @@
 package cl.multicaja;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  *
  * @author fseguel
  */
+@EnableAutoConfiguration
+@Configuration
+@ComponentScan("cl.multicaja")
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = {"cl.multicaja.repository"})
+@EntityScan(basePackages = {"cl.multicaja.models"})
 public class Application {
 
     /**

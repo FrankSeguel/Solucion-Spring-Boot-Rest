@@ -13,7 +13,7 @@
       OIDS=FALSE
     );
     ALTER TABLE cliente
-      OWNER TO docker;
+      OWNER TO postgres;
 
 ## TABLA SALDO
     DROP TABLE saldo;
@@ -34,7 +34,7 @@
       OIDS=FALSE
     );
     ALTER TABLE saldo
-      OWNER TO docker;
+      OWNER TO postgres;
 
 ## TABLA TIPO_SALDO
     DROP TABLE tipo_saldo;
@@ -51,4 +51,4 @@
       OIDS=FALSE
     );
     ALTER TABLE tipo_saldo
-      OWNER TO docker;
+      OWNER TO postgres;
